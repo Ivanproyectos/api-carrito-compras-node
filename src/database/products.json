@@ -1,0 +1,42 @@
+[
+  {
+    "uuid": 1,
+    "title": "lays",
+    "decription": "palta serlvatica",
+    "code": "p34466",
+    "price": 10,
+    "status": true,
+    "stock": 2,
+    "category": "verdura"
+  },
+  {
+    "uuid": 2,
+    "title": "palta",
+    "decription": "palta serlvatica",
+    "code": "dfgdcdd",
+    "price": 10,
+    "status": true,
+    "stock": 2,
+    "category": "verdura"
+  },
+  {
+    "uuid": 3,
+    "title": "Papita",
+    "decription": "palta serlvatica",
+    "code": "456888",
+    "price": 10.2,
+    "status": true,
+    "stock": 2,
+    "category": "verdura"
+  },
+  {
+    "uuid": 4,
+    "title": "Papita",
+    "decription": "palta serlvatica",
+    "code": "4568fgfdg88",
+    "price": 10.2,
+    "status": false,
+    "stock": 2,
+    "category": "verdura"
+  }
+]
