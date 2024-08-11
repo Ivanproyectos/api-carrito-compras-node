@@ -1,0 +1,28 @@
+<section class="container">
+  <h1>Todos nuestros productos</h1>
+  <div class="products">
+    {{#each products}}
+      <article>
+        <figure>
+          <img height="250" src="/assets/img/naranja.jpg"/>
+        </figure>
+        <div class="products__info">
+          <p class="products__category">
+            <small>{{category}}</small>
+          </p>
+          <h3>{{title}}</h3>
+          <div class="products__footer">
+            <p><strong> ${{price}}</strong></p>
+            <div class="products__action">
+                 <button class="btn btn-outline-primary"><i class='bx bx-heart'></i></button>
+                 <button class="btn btn-primary">Add to cart </button>
+            </div>
+          
+          </div>
+        </div>
+      </article>
+    {{/each}}
+  </div>
+</section>
+
+<script src="/js/index.js"></script>

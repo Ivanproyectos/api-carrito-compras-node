@@ -1,0 +1,215 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Light.woff2') format('woff2'),
+         url('../assets/fonts/Roboto/Roboto-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+         url('../assets/fonts/Roboto/Roboto-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+         url('../assets/fonts/Roboto/Roboto-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+p{
+    margin-bottom: 1rem;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* Regular */
+}
+textarea{
+    resize: vertical;
+}
+
+:root{
+    --primary-color: #8039ea;
+    --danger-color: #F2415A;
+    --succes-color: #27BE69;
+    --warning-color: #FFBF0F;
+    --gray-light: #818181;
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 0;
+}
+header{
+    height: 80px;
+    padding: 0 1rem;
+    line-height: 80px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: center;
+    vertical-align: center; 
+}
+.badge{
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    vertical-align: center;
+}
+.badge-success{
+    background-color: #D0F5E1;
+    color: #27BE69;
+}
+.badge-danger{
+    background-color: #FCD9DE;
+    color: #F2415A;
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-outline-primary {
+    border: 1px solid var(--primary-color);
+    background-color: #fff;
+    color: var(--primary-color);
+}
+.btn-outline-danger {
+    border: 1px solid var(--danger-color);
+    background-color: #fff;
+    color: var(--danger-color);
+}
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.products article{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius:  0.5rem;
+}
+.products article figure img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.products__info{
+    padding: 1rem;
+}
+.products__category{
+    color: var(--gray-light);
+    margin-bottom: 0.3rem;
+    font-weight: 300;
+}
+.products__footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.products__action{
+    display: flex;
+    gap: .5rem;
+}
+
+
+/* product real time*/
+.validation__message{
+    display: none;
+    color: var(--danger-color);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.validation--error input{
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 2px rgb(242 65 90 / 20%);
+    transition: all 1s ease;
+}
+.card{
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.form-product{
+    display: block;
+    max-width: 500px;
+    margin: auto;
+}
+.form-group{
+    margin-bottom: 1rem;
+}
+.form-group label{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.form-control{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+}
+.form-flex{
+    display: flex;
+    gap: 0.5rem;
+}
+.form-flex .form-group{
+    flex: 1 1 50%;
+}
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table th{
+    text-align: left;
+    font-weight:  700;
+}
+.table td, .table th{
+    padding: 0.8rem;
+    border-bottom: 1px dashed #ccc;
+}
+.table-product__img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+.form-product__submit{
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+}
+.table-product__info{
+    display: flex;
+    align-items: center;
+    gap: 1rem
+}
+.table-product__info p{
+    margin-bottom: 0;
+}
+.table-product__code{
+    color: var(--gray-light);
+}
