@@ -1,25 +1,33 @@
 @font-face {
     font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto/Roboto-Light.woff2') format('woff2'),
-         url('../assets/fonts/Roboto/Roboto-Light.woff') format('woff');
+    src: url('../fonts/Roboto/Roboto-Light.woff2') format('woff2'),
+         url('../fonts/Roboto/Roboto-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
-         url('../assets/fonts/Roboto/Roboto-Regular.woff') format('woff');
+    src: url('../fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+         url('../fonts/Roboto/Roboto-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
-         url('../assets/fonts/Roboto/Roboto-Bold.woff') format('woff');
+    src: url('../fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+         url('../fonts/Roboto/Roboto-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
+}
+:root{
+    --primary-color: #8039ea;
+    --danger-color: #F2415A;
+    --succes-color: #27BE69;
+    --warning-color: #FFBF0F;
+    --gray-light: #818181;
+    --max-width: 1200px;
 }
 
 *{
@@ -43,24 +51,48 @@ textarea{
     resize: vertical;
 }
 
-:root{
-    --primary-color: #8039ea;
-    --danger-color: #F2415A;
-    --succes-color: #27BE69;
-    --warning-color: #FFBF0F;
-    --gray-light: #818181;
-}
+
 .container{
-    max-width: 1200px;
+    max-width:var(--max-width);
     margin: auto;
-    padding: 2rem 0;
 }
 header{
     height: 80px;
     padding: 0 1rem;
-    line-height: 80px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
+.header{
+    margin: auto;
+    max-width: var(--max-width);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.header h1{
+    margin-bottom: 0;
+}
+
+.header ul {
+    align-self: center;
+    display: flex;
+    gap: 1rem;
+}
+.header ul li a{
+    text-decoration: none;
+    color: var(--gray-light);
+}
+.header ul li{
+    list-style: none;
+}
+.header ul li a:hover{
+    color: var(--primary-color);
+}
+.home{
+    padding: 4rem 0;
+}
+
 .btn {
     padding: 0.5rem 1rem;
     border: none;
@@ -69,13 +101,17 @@ header{
     font-size: 0.9rem;
     text-align: center;
     vertical-align: center; 
+    background: transparent;
 }
 .badge{
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-align: center;
     vertical-align: center;
+}
+.text-center{
+    text-align: center;
 }
 .badge-success{
     background-color: #D0F5E1;
@@ -84,6 +120,9 @@ header{
 .badge-danger{
     background-color: #FCD9DE;
     color: #F2415A;
+}
+.text-danger{
+    color: var(--danger-color);
 }
 .btn-primary {
     background-color: var(--primary-color);
@@ -106,6 +145,7 @@ header{
 }
 
 .products article{
+    border: 1px solid #e4e4e4;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius:  0.5rem;
 }
@@ -133,8 +173,20 @@ header{
     gap: .5rem;
 }
 
-
 /* product real time*/
+
+.product-manager{
+    padding: 4rem 0;
+}
+
+.product-manager .card:first-child {
+ margin-bottom: 1rem;
+}
+
+.validation--error .validation__message{
+    display: block;
+}
+
 .validation__message{
     display: none;
     color: var(--danger-color);
@@ -148,10 +200,11 @@ header{
     transition: all 1s ease;
 }
 .card{
+    border: 1px solid #e4e4e4;
     width: 100%;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
 }
 .form-product{
     display: block;

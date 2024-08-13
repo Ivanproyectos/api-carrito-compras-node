@@ -1,7 +1,8 @@
 import { Router } from 'express'
-import ProductController from '../controllers/product.controller.js'
+import { upload } from '../helpers/upload.js'
 import { StatusCodes } from 'http-status-codes'
 import { createProductValidator } from '../validators/product.validator.js'
+import ProductController from '../controllers/product.controller.js'
 
 const router = Router()
 
@@ -29,11 +30,13 @@ router.get('/products/:id', async (req, res, next) => {
   }
 })
 
-router.post('/products', createProductValidator, async (req, res, next) => {
+router.post('/products', upload.single('file'), createProductValidator, async (req, res, next) => {
   try {
     const { title, description, code, price, stock, status = true, category } = req.body
-    const productController = new ProductController()
-    await productController.createProduct({ title, description, code, price, stock, status, category })
+    console.log(req.body)
+    req.io.emit('product-created', req.body)
+    /* const productController = new ProductController()
+    await productController.createProduct({ title, description, code, price, stock, status, category }) */
     res.sendStatus(StatusCodes.CREATED)
   } catch (err) {
     next(err)

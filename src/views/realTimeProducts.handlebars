@@ -1,8 +1,8 @@
-<section class="container">
+<section class="container product-manager">
   <div class="card">
-    <form class="form-product" method="POST" action="/api/products" enctype="multipart/form-data">
-      <h1><strong>add product</strong></h1>
-      <p>Ingresa los datos del nuevo producto</p>
+     <h1 class="text-center"><strong>Agregar nuevo Producto</strong></h1>
+      <p class="text-center">Ingresa los datos del nuevo producto</p>
+    <form class="form-product" id="form-product" method="POST" action="/api/products" enctype="multipart/form-data">
       <div class="form-flex">
         <div class="form-group">
           <label for="title">Title</label>
@@ -34,19 +34,18 @@
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea type="text" class="form-control" id="description" name="description"></textarea>
+        <textarea type="text" required class="form-control" id="description" name="description"></textarea>
+        <div class="validation__message">Este campo es obligatorio</div>
       </div>
       <div class="form-group">
-        <button type="button" class="btn btn-primary form-product__submit">Agregar Producto</button>
+        <button type="button" id="button-save" class="btn btn-primary form-product__submit">Agregar Producto</button>
       </div>
     </form>
   </div>
-</section>
-<section class="container">
-  <div class="card">
+<div class="card">
     <h3><strong>products</strong></h3>
     <div class="table-product">
-      <table class="table">
+      <table class="table" id="table-products">
         <thead>
           <tr>
             <th scope="col">Product</th>
@@ -73,11 +72,13 @@
               <span class="badge badge-success">Active</span>
             </td>
             <td>
-              <button class="btn btn-outline-danger"><i class="bx bx-trash"></i></button>
+              <button class="btn" ><i class="bx bx-trash"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
+</div>
 </section>
+<!--<script src="/socket.io/socket.io.js"></script> -->
+<script src="/js/products.js" type="module"></script>

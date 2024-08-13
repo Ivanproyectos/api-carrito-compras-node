@@ -14,7 +14,7 @@ const hasUniqueProductCode = async (value) => {
 
 export const createProductValidator = [
   check('title', 'El titulo es obligatorio').notEmpty(),
-  check('decription', 'La descripción es obligatoria').notEmpty(),
+  check('description', 'La descripción es obligatoria').notEmpty(),
   check('code', 'El código es obligatorio').notEmpty()
     .custom(hasUniqueProductCode),
   check('price', 'El precio es obligatorio').notEmpty()
