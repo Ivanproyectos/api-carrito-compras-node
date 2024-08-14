@@ -18,9 +18,9 @@ export const createProductValidator = [
   check('code', 'El código es obligatorio').notEmpty()
     .custom(hasUniqueProductCode),
   check('price', 'El precio es obligatorio').notEmpty()
-    .isDecimal().withMessage('El precio debe ser un decimal'),
+    .isDecimal().withMessage('El precio debe ser un numero'),
   check('stock', 'El stock es obligatorio').notEmpty()
-    .isNumeric().withMessage('El id del carro es obligatorio'),
+    .isNumeric().withMessage('El stock debe ser un numero'),
   check('category', 'La categoria es obligatoria').notEmpty(),
 
   (req, res, next) => {

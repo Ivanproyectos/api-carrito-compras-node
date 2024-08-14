@@ -1,5 +1,10 @@
 const tableBody = document.querySelector('#table-products tbody')
 export function renderProducts (products) {
+  if (products.length === 0) {
+    tableBody.innerHTML = '<tr><td class="text-center" colspan="5">Ningun producto para mostrar</td></tr>'
+    return
+  }
+
   tableBody.innerHTML = ''
 
   const renderedRows = products.map(renderRow)
@@ -7,16 +12,21 @@ export function renderProducts (products) {
 }
 
 export function renderProduct (product) {
+  const row = tableBody.querySelector(`[data-row-id]`)
+  if(!row){
+    tableBody.innerHTML = ''
+  }
+
   const renderedRow = renderRow(product)
   tableBody.prepend(renderedRow)
 }
 function renderRow (product) {
   const tr = document.createElement('tr')
-
+  tr.dataset.rowId = product.uuid
   tr.innerHTML = `
         <td>
             <div class="table-product__info">
-                <img src="/assets/img/${product.image}" class="table-product__img" />
+                <img src="/uploads/${product.image}" class="table-product__img" />
                 <div class="table-product__name">
                 <p>${product.title}</p>
                 <small class="table-product__code">code: ${product.code}</small>
@@ -33,6 +43,11 @@ function renderRow (product) {
         </td>
     `
   return tr
+}
+
+export function deleteRow (id) {
+  const row = tableBody.querySelector(`[data-row-id="${id}"]`)
+  row?.remove()
 }
 
 function renderRowStatus (isActive) {

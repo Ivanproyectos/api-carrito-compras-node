@@ -49,6 +49,7 @@ body{
 }
 textarea{
     resize: vertical;
+    font-family: inherit;
 }
 
 
@@ -202,7 +203,7 @@ header{
 .card{
     border: 1px solid #e4e4e4;
     width: 100%;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
 }
@@ -228,7 +229,7 @@ header{
 }
 .form-flex{
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 .form-flex .form-group{
     flex: 1 1 50%;
@@ -242,7 +243,9 @@ header{
     font-weight:  700;
 }
 .table td, .table th{
-    padding: 0.8rem;
+    padding-top: 0.8rem;
+    padding-right: 0.8rem;
+    padding-bottom: 0.8rem;
     border-bottom: 1px dashed #ccc;
 }
 .table-product__img{

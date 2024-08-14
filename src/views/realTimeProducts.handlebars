@@ -38,6 +38,11 @@
         <div class="validation__message">Este campo es obligatorio</div>
       </div>
       <div class="form-group">
+        <label for="file">Imagen</label>
+        <input type="file" required accept="image/*" class="form-control" id="file" name="file" />
+        <div class="validation__message">Este campo es obligatorio</div>
+      </div>
+      <div class="form-group">
         <button type="button" id="button-save" class="btn btn-primary form-product__submit">Agregar Producto</button>
       </div>
     </form>
@@ -48,31 +53,17 @@
       <table class="table" id="table-products">
         <thead>
           <tr>
-            <th scope="col">Product</th>
-            <th scope="col">Category</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Accion</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <div class="table-product__info">
-                <img src="/assets/img/naranja.jpg" class="table-product__img" />
-                <div class="table-product__name">
-                  <p>Naranja</p>
-                  <small class="table-product__code">code: 123456</small>
-                </div>
-              </div>
-            </td>
-            <td>Verduras</td>
-            <td>15.00</td>
-            <td>
-              <span class="badge badge-success">Active</span>
-            </td>
-            <td>
-              <button class="btn" ><i class="bx bx-trash"></i></button>
+            <td colspan="5" class="text-center">
+              <i class="bx bx-loader bx-spin bx-flip-horizontal bx-sm"></i>
             </td>
           </tr>
         </tbody>

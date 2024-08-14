@@ -1,5 +1,6 @@
 import { validateForms, isFormValid } from './form-valid.js'
-import { renderProducts, renderProduct } from './product-table.js'
+import { renderProducts, renderProduct, deleteRow } from './product-table.js'
+import { SweetOk, SweetError, SweetWarning } from './utils/sweetAlert.js'
 import '/socket.io/socket.io.js'
 
 const buttonSave = document.querySelector('#button-save')
@@ -37,15 +38,22 @@ async function createProduct () {
       }
       const response = await fetch(url, requestOptions)
       if (!response.ok) {
-        form.reset()
+        const { title, details } = await response.json()
+        const message = details?.[0]?.msg
+
+        if (response.status === 400) {
+          SweetWarning(title, message)
+        } else {
+          throw new Error(title)
+        }
+
+        return
       }
-      if (response.status === 400) {
-        const error = await response.json()
-        console.error(error)
-      }
+
       form.reset()
     } catch (error) {
       console.error(error)
+      SweetError('Ocurrió un error', 'No se pudo crear el producto')
     }
   }
 }
@@ -55,13 +63,16 @@ async function deleteProduct (id) {
     method: 'DELETE'
   }
   await fetch(url, requestOptions)
+  SweetOk('Producto eliminado con exito')
 }
-
 async function initProducts () {
   const products = await getProducts()
   renderProducts(products)
 }
-
-socket.on('product-created', (product) => {
+socket.on('productCreated', (product) => {
   renderProduct(product)
+})
+
+socket.on('productDeleted', (idProduct) => {
+  deleteRow(idProduct)
 })

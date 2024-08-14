@@ -1,42 +1,68 @@
 [
   {
-    "uuid": 1,
-    "title": "lays",
-    "decription": "palta serlvatica",
-    "code": "p34466",
-    "price": 10,
+    "uuid": 6,
+    "title": "Manzana",
+    "description": "hola",
+    "code": "456777",
+    "price": "5.5",
+    "stock": "45",
     "status": true,
-    "stock": 2,
-    "category": "verdura"
+    "category": "fruta",
+    "image": "fdee2ff1-07e2-4bad-b66d-dcc55f41c786.webp"
   },
   {
-    "uuid": 2,
-    "title": "palta",
-    "decription": "palta serlvatica",
-    "code": "dfgdcdd",
-    "price": 10,
+    "uuid": 6,
+    "title": "Pera",
+    "description": "pera dulce",
+    "code": "4566777",
+    "price": "1.5",
+    "stock": "455",
     "status": true,
-    "stock": 2,
-    "category": "verdura"
+    "category": "fruta",
+    "image": "a3ed4d25-b36c-42bc-b4b0-2d3cdcb70edd.webp"
+  },
+  {
+    "uuid": 5,
+    "title": "Naranja",
+    "description": "dulce dulce",
+    "code": "4566566",
+    "price": "6.21",
+    "stock": "4",
+    "status": true,
+    "category": "frutas",
+    "image": "25398d72-115b-4b06-90d3-04b9b007eedd.jpg"
   },
   {
     "uuid": 3,
-    "title": "Papita",
-    "decription": "palta serlvatica",
-    "code": "456888",
-    "price": 10.2,
+    "title": "Platano",
+    "description": "platano guando",
+    "code": "45666",
+    "price": "1.2",
+    "stock": "13",
     "status": true,
-    "stock": 2,
-    "category": "verdura"
+    "category": "fruta",
+    "image": "b868a99c-2fdb-419c-ac5d-8c0733179838.webp"
   },
   {
-    "uuid": 4,
-    "title": "Papita",
-    "decription": "palta serlvatica",
-    "code": "4568fgfdg88",
-    "price": 10.2,
-    "status": false,
-    "stock": 2,
-    "category": "verdura"
+    "uuid": 2,
+    "title": "Palta",
+    "description": "d",
+    "code": "4567",
+    "price": "10.2",
+    "stock": "4",
+    "status": true,
+    "category": "verdura",
+    "image": "5888f037-953b-4aa8-88af-f74aa56d7c73.webp"
+  },
+  {
+    "uuid": 1,
+    "title": "Tomate",
+    "description": "4",
+    "code": "64544",
+    "price": "12",
+    "stock": "34",
+    "status": true,
+    "category": "verdura",
+    "image": "870ad431-8ac7-4371-ac6c-e9cade81f322.webp"
   }
 ]

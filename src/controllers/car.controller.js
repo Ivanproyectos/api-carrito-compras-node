@@ -1,10 +1,10 @@
 import fileSystem from 'fs/promises'
 import ProductController from '../controllers/product.controller.js'
-import { __diname } from '../helpers/basePath.js'
+import { __dirname } from '../helpers/basePath.js'
 
 class CarController {
   constructor () {
-    this.path = `${__diname}/database/cars.json`
+    this.path = `${__dirname}/database/cars.json`
   }
 
   async getCars () {
