@@ -1,9 +1,9 @@
 import fileSystem from 'fs/promises'
-import { __dirname } from '../helpers/basePath.js'
+import { __dirname } from '../../helpers/basePath.js'
 
 class ProductController {
   constructor () {
-    this.path = `${__dirname}/database/products.json`
+    this.path = `${__dirname}/daos/manager/files/products.json`
   }
 
   async getProducts () {

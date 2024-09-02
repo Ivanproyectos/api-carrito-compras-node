@@ -2,25 +2,35 @@
   <h1>Todos nuestros productos</h1>
   <div class="products">
     {{#each products}}
-      <article>
-        <figure>
-          <img height="250" src="/uploads/{{ image }}"/>
-        </figure>
-        <div class="products__info">
-          <p class="products__category">
-            <small>{{category}}</small>
-          </p>
-          <h3>{{title}}</h3>
-          <div class="products__footer">
-            <p><strong> ${{price}}</strong></p>
-            <div class="products__action">
-                 <button class="btn btn-outline-primary"><i class='bx bx-heart'></i></button>
-                 <button class="btn btn-primary">Add to cart </button>
-            </div>
-          
+    <article>
+      <figure>
+        <img height="250" src="/uploads/{{image}}" />
+      </figure>
+      <div class="products__info">
+        <p class="products__category">
+          <small>{{category}}</small>
+        </p>
+        <h3>{{title}}</h3>
+        <div class="products__footer">
+          <p><strong> ${{price}}</strong></p>
+          <div class="products__action">
+            <button class="btn btn-outline-primary"><i class="bx bx-heart"></i></button>
+            <button class="btn btn-primary" data-action="add-to-cart" data-product="{{_id}}">Add to cart </button>
           </div>
         </div>
-      </article>
+      </div>
+    </article>
     {{/each}}
   </div>
+  <div>
+    {{#if pagination.hasPrevPage}}
+     <a href="/products?page={{pagination.prevPage}}">Anterior</a>
+    {{/if}}
+     {{#if pagination.hasNextPage}}
+     <a href="/products?page={{pagination.nextPage}}">Siguiente</a>
+    {{/if}}
+  </div>
 </section>
+{{#section "script"}}
+<script src="/js/car.js" type="module"></script>
+{{/section}}

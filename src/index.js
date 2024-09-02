@@ -7,6 +7,7 @@ import routeProduct from './routes/product.route.js'
 import routeView from './routes/views.route.js'
 import { engine } from 'express-handlebars'
 import { __dirname } from './helpers/basePath.js'
+import { connectDB } from './config/db.js'
 
 const PORT = 8080
 const app = express()
@@ -16,9 +17,18 @@ const io = new Server(httpServer)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(helmet())
+connectDB();
 
 app.use(express.static(`${__dirname}/public`))
-app.engine('handlebars', engine({ defaultLayout: 'main' }))
+app.engine('handlebars', engine({ defaultLayout: 'main',
+ helpers: {
+  section: function(name, options) {
+    if (!this._sections) this._sections = {};
+    this._sections[name] = options.fn(this);
+    return null;
+  }
+} 
+}))
 app.set('view engine', 'handlebars')
 app.set('views', `${__dirname}/views`)
 

@@ -1,12 +1,12 @@
 import { check } from 'express-validator'
-import ProductController from '../controllers/product.controller.js'
+import ProductController from '../daos/manager/product.controller.js'
+import ProductDao from '../daos/database/productDao.js'
 import validatorHandler from '../helpers/validatorResult.js'
 
 const hasUniqueProductCode = async (value) => {
-  const productController = new ProductController()
-  const products = await productController.getProducts()
-  const existsCode = products.some(product => product.code === value)
-  if (existsCode) {
+  const productDao = new ProductDao()
+  const products = await productDao.getProductByCode(value)
+  if (products) {
     throw new Error('El codigo de producto ya existe')
   }
   return true

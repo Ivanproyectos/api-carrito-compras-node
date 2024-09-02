@@ -37,7 +37,7 @@ function renderRow (product) {
         <td>${product.price}</td>
         <td>${renderRowStatus(product.status)}</td>
         <td>
-            <button class="btn text-danger" data-id="${product.uuid}" data-action="delete">
+            <button class="btn text-danger" data-id="${product._id}" data-action="delete">
                 <i class="bx bx-trash"></i>
             </button>
         </td>

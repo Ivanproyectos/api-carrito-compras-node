@@ -1,6 +1,6 @@
 import fileSystem from 'fs/promises'
-import ProductController from '../controllers/product.controller.js'
-import { __dirname } from '../helpers/basePath.js'
+import ProductController from './product.controller.js'
+import { __dirname } from '../../helpers/basePath.js'
 
 class CarController {
   constructor () {
