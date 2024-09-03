@@ -23,10 +23,10 @@ export default (io) => {
   router.get('/products/paginated', async (req, res, next) => {
     try {
 
-      const { page = 1, limit = 8, search = '' } = req.query
+      const { page = 1, limit = 8, search = '', sort } = req.query
       const productDao = new ProductDao()
 
-      const result = await productDao.getProductsPaginated(page, limit, search)
+      const result = await productDao.getProductsPaginated(page, limit, search, sort)
 
       res.send({
         products: result.docs,
