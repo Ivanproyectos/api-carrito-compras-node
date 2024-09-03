@@ -24,20 +24,33 @@
   </div>
   <div class="pagination">
     {{#if pagination.hasPrevPage}}
-      <a class="pagination__link" data-has-page="{{pagination.hasPrevPage}}"
-        href="/products?page={{pagination.prevPage}}">
-        <i class="bx bx-chevron-left"></i>
-      </a>
+    <a class="pagination__link" data-has-page="{{pagination.hasPrevPage}}"
+      href="/products?page={{pagination.prevPage}}">
+      <i class="bx bx-chevron-left"></i>
+    </a>
     {{/if}}
-      <span class="pagination__page">{{pagination.page}}</span>
+    <span class="pagination__page">{{pagination.page}}</span>
     {{#if pagination.hasNextPage}}
-      <a class="pagination__link" data-has-page="{{pagination.hasNextPage}}"
-        href="/products?page={{pagination.nextPage}}">
-        <i class="bx bx-chevron-right"></i>
-      </a>
+    <a class="pagination__link" data-has-page="{{pagination.hasNextPage}}"
+      href="/products?page={{pagination.nextPage}}">
+      <i class="bx bx-chevron-right"></i>
+    </a>
     {{/if}}
   </div>
 </section>
+
+<div class="car">
+  <div class="car__container">
+    <div class="car__title">
+      <h3>mis productos</h2>
+      <button class="btn" data-action="hide-car"><i class="bx bx-x bx-sm"></i></button>
+    </div>
+    <div class="car__list">
+       <p class="text-center">sin productos</p>
+    </div>
+  </div>
+</div>
+
 {{#section "script"}}
 <script src="/js/car.js" type="module"></script>
 {{/section}}

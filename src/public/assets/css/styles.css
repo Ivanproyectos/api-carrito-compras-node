@@ -22,7 +22,7 @@
     font-style: normal;
 }
 :root{
-    --primary-color: #8039ea;
+    --primary-color: #915ef4;
     --danger-color: #F2415A;
     --succes-color: #27BE69;
     --warning-color: #FFBF0F;
@@ -38,6 +38,9 @@
 h1, h2, h3, h4, h5, h6{
     font-weight: 700;
     margin-bottom: 1rem;
+}
+html{
+    overflow-x: hidden;
 }
 p{
     margin-bottom: 1rem;
@@ -87,6 +90,63 @@ header{
 .header ul li{
     list-style: none;
 }
+nav{
+    display: flex;
+}
+.header__cart{
+    position: relative;
+}
+.header__cart-count{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #FCD9DE;
+    color: #F2415A;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.8rem;
+    display: none;
+    transition: all 1s ease;
+}
+
+.car{
+    width: 600px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: -2px 0 12px rgb(0 0 0 / 10%);
+    transition: all 1s ease;
+    transform: translateX(100%);
+}
+
+.car__container{
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.car__title{
+  display: flex;
+  justify-content: space-between;
+}
+.car__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin-top: .5rem;
+}
+.car--show{
+    transform: translateX(0%);
+}
+
 .header ul li a:hover{
     color: var(--primary-color);
 }
@@ -128,6 +188,10 @@ header{
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
+    transition: all 0.5s ease-in-out;
+}
+.btn-primary:hover{
+    background-color: #8039ea;
 }
 .btn-outline-primary {
     border: 1px solid var(--primary-color);
