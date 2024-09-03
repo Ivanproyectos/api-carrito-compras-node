@@ -1,7 +1,7 @@
 <section class="container product-manager">
   <div class="card">
-     <h1 class="text-center"><strong>Agregar nuevo Producto</strong></h1>
-      <p class="text-center">Ingresa los datos del nuevo producto</p>
+    <h1 class="text-center"><strong>Agregar nuevo Producto</strong></h1>
+    <p class="text-center">Ingresa los datos del nuevo producto</p>
     <form class="form-product" id="form-product" method="POST" action="/api/products" enctype="multipart/form-data">
       <div class="form-flex">
         <div class="form-group">
@@ -47,9 +47,17 @@
       </div>
     </form>
   </div>
-<div class="card">
+  <div class="card">
     <h3><strong>products</strong></h3>
     <div class="table-product">
+      <div class="table-product__search">
+        <input type="text" class="form-control" id="search" placeholder="Busca un producto..." />
+        <select class="form-control" id="limit">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+      </div>
       <table class="table" id="table-products">
         <thead>
           <tr>
@@ -68,8 +76,22 @@
           </tr>
         </tbody>
       </table>
+      <div class="table-product__pagination">
+        <div class="pagination">
+          <button class="pagination__page" aria-disabled="true" data-action="previous">
+            <i class="bx bx-chevron-left"></i>
+          </button>
+          <ul class="pagination__list">
+            <li class="pagination__item">1</li>
+            <li class="pagination__item">2</li>
+            <li class="pagination__item">3</li>
+          </ul>
+          <button class="pagination__page" aria-disabled="true" data-action="next">
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 </section>
-<!--<script src="/socket.io/socket.io.js"></script> -->
 <script src="/js/products.js" type="module"></script>

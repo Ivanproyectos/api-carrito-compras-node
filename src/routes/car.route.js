@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import CarController from '../daos/manager/car.controller.js'
 import CarDao from '../daos/database/carDao.js'
 import { addProductValidator, getCarValidator } from '../validators/car.validator.js'
 import { StatusCodes } from 'http-status-codes'
@@ -43,7 +42,7 @@ router.get('/cars/:id', getCarValidator, async (req, res, next) => {
         .send({ error: 'El carro no existe' })
       return
     }
-    // const carProducts = await carController.getProductsByCarId(id)
+
     res.send(car)
   } catch (err) {
     next(err)

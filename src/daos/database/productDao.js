@@ -10,10 +10,33 @@ export default class ProductDao {
         return products
     }
 
-    async getProductsPaginated (page = 1, limit = 5) {
-        const products = await Product.paginate({}, { page, limit, lean: true })
-        return products
+    /**
+     * Retrieves products from the database, paginated.
+     *
+     * @param {number} [page=1] The page of products to retrieve.
+     * @param {number} [limit=5] The number of products to retrieve per page.
+     * @param {string} [search=''] The search query to filter products by.
+     *
+     * @returns {Promise<object>} Resolves with an object containing the products, and pagination metadata.
+     */
+    async getProductsPaginated (page = 1, limit = 5, search = '') {
+        const filter = {
+            $or: [
+                { title: { $regex: search, $options: 'i' } },
+                { category: { $regex: search, $options: 'i' } },
+                { code: { $regex: search, $options: 'i' } }
+            ]
+        };
+
+        const result = await Product.paginate(filter, {
+            page,
+            limit,
+            lean: true
+        });
+
+        return result;
     }
+
     async createProduct (product) {
         const newProduct = new Product(product)
         await newProduct.save()

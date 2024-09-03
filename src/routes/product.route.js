@@ -20,6 +20,32 @@ export default (io) => {
     }
   })
 
+  router.get('/products/paginated', async (req, res, next) => {
+    try {
+
+      const { page = 1, limit = 8, search = '' } = req.query
+      const productDao = new ProductDao()
+
+      const result = await productDao.getProductsPaginated(page, limit, search)
+
+      res.send({
+        products: result.docs,
+        pagination: {
+          totalPages: result.totalPages,
+          page: Number(result.page),
+          hasPrevPage: result.hasPrevPage,
+          hasNextPage: result.hasNextPage,
+          prevPage: result.prevPage,
+          nextPage: result.nextPage
+        }
+      })
+
+    } catch (err) {
+      next(err)
+    }
+  })
+
+
   router.get('/products/:id', async (req, res, next) => {
     try {
 

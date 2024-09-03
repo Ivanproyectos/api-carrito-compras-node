@@ -1,16 +1,21 @@
 import { validateForms, isFormValid } from './form-valid.js'
-import { renderProducts, renderProduct, deleteRow } from './product-table.js'
+import { renderProducts, renderProduct, deleteRow, renderPagination } from './product-table.js'
 import { SweetOk, SweetError, SweetWarning } from './utils/sweetAlert.js'
 import '/socket.io/socket.io.js'
 
 const buttonSave = document.querySelector('#button-save')
 const tableProducts = document.querySelector('#table-products')
+const productLimitSelect = document.querySelector('#limit');
+const searchInput = document.querySelector('#search')
+
 const socket = io()
 
 validateForms()
 initProducts()
 
+searchInput.addEventListener('keyup', initProducts)
 buttonSave.addEventListener('click', createProduct)
+productLimitSelect.addEventListener('change', initProducts)
 tableProducts.addEventListener('click', async (event) => {
   const buttonDelete = event.target.closest('button[data-action="delete"]')
   if (buttonDelete) {
@@ -18,9 +23,11 @@ tableProducts.addEventListener('click', async (event) => {
     deleteProduct(id)
   }
 })
+async function getProducts (page) {
+ const search = searchInput.value
+ const limit =  parseInt(productLimitSelect.value)
 
-async function getProducts () {
-  const url = '/api/products'
+  const url = `/api/products/paginated?search=${search}&limit=${limit}&page=${page}`
   const respose = await fetch(url)
   const products = await respose.json()
 
@@ -65,9 +72,10 @@ async function deleteProduct (id) {
   await fetch(url, requestOptions)
   SweetOk('Producto eliminado con exito')
 }
-async function initProducts () {
-  const products = await getProducts()
+async function initProducts (page = 1) {
+  const { products, pagination} = await getProducts(page)
   renderProducts(products)
+  renderPagination(pagination, initProducts)
 }
 socket.on('productCreated', (product) => {
   renderProduct(product)

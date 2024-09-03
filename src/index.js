@@ -17,7 +17,7 @@ const io = new Server(httpServer)
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(helmet())
-connectDB();
+connectDB()
 
 app.use(express.static(`${__dirname}/public`))
 app.engine('handlebars', engine({ defaultLayout: 'main',
@@ -29,6 +29,7 @@ app.engine('handlebars', engine({ defaultLayout: 'main',
   }
 } 
 }))
+
 app.set('view engine', 'handlebars')
 app.set('views', `${__dirname}/views`)
 

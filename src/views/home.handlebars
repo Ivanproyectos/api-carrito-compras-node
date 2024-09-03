@@ -22,12 +22,19 @@
     </article>
     {{/each}}
   </div>
-  <div>
+  <div class="pagination">
     {{#if pagination.hasPrevPage}}
-     <a href="/products?page={{pagination.prevPage}}">Anterior</a>
+      <a class="pagination__link" data-has-page="{{pagination.hasPrevPage}}"
+        href="/products?page={{pagination.prevPage}}">
+        <i class="bx bx-chevron-left"></i>
+      </a>
     {{/if}}
-     {{#if pagination.hasNextPage}}
-     <a href="/products?page={{pagination.nextPage}}">Siguiente</a>
+      <span class="pagination__page">{{pagination.page}}</span>
+    {{#if pagination.hasNextPage}}
+      <a class="pagination__link" data-has-page="{{pagination.hasNextPage}}"
+        href="/products?page={{pagination.nextPage}}">
+        <i class="bx bx-chevron-right"></i>
+      </a>
     {{/if}}
   </div>
 </section>
