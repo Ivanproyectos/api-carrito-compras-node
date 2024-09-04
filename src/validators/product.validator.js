@@ -1,5 +1,4 @@
-import { check } from 'express-validator'
-import ProductController from '../daos/manager/product.controller.js'
+import { check, query } from 'express-validator'
 import ProductDao from '../daos/database/productDao.js'
 import validatorHandler from '../helpers/validatorResult.js'
 
@@ -11,6 +10,25 @@ const hasUniqueProductCode = async (value) => {
   }
   return true
 }
+
+const validFormatJson = async (value) => {
+  try {
+    if (value) {
+      JSON.parse(value)
+    }
+    return true
+  } catch (error) {
+    throw new Error('El formato del JSON es incorrecto')
+  }
+}
+
+export const createGetProductValidator = [
+  query('query').custom(validFormatJson),
+
+  (req, res, next) => {
+    validatorHandler(req, res, next)
+  }
+]
 
 export const createProductValidator = [
   check('title', 'El titulo es obligatorio').notEmpty(),

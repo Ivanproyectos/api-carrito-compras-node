@@ -52,8 +52,14 @@
     <div class="table-product">
       <div class="table-product__search">
         <input type="text" class="form-control" id="search" placeholder="Busca un producto..." />
+        <select class="form-control" id="sort">
+          <option value="">Orden</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendente</option>
+        </select>
         <select class="form-control" id="limit">
-          <option value="5">5</option>
+           <option value="">Limite</option>
+          <option value="5" selected>5</option>
           <option value="10">10</option>
           <option value="15">15</option>
         </select>

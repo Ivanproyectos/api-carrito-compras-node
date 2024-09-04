@@ -1,8 +1,8 @@
 const tableBody = document.querySelector('#table-products tbody')
 const tablePagination = document.querySelector('.table-product__pagination')
 const paginationList = tablePagination.querySelector('.pagination__list')
-const previusButton = tablePagination.querySelector(`button[data-action="previous"]`)
-const nextButton = tablePagination.querySelector(`button[data-action="next"]`)
+const previusButton = tablePagination.querySelector('button[data-action="previous"]')
+const nextButton = tablePagination.querySelector('button[data-action="next"]')
 
 export function renderProducts (products) {
   if (products.length === 0) {
@@ -14,11 +14,10 @@ export function renderProducts (products) {
 
   const renderedRows = products.map(renderRow)
   tableBody.append(...renderedRows)
-
 }
 export function renderProduct (product) {
-  const row = tableBody.querySelector(`[data-row-id]`)
-  if(!row){
+  const row = tableBody.querySelector('[data-row-id]')
+  if (!row) {
     tableBody.innerHTML = ''
   }
 
@@ -64,8 +63,7 @@ export function renderPagination (pagination, onPageChange) {
 
   paginationList.innerHTML = ''
 
-  for(let i = 1; i <= pagination.totalPages; i++) {
-
+  for (let i = 1; i <= pagination.totalPages; i++) {
     const li = document.createElement('li')
 
     li.classList.add('pagination__item')
@@ -81,10 +79,9 @@ export function renderPagination (pagination, onPageChange) {
   }
 
   configureMovePage(pagination, onPageChange)
-
 }
-function configureMovePage(pagination, onPageChange){
-  const { hasPrevPage, hasNextPage, prevPage, nextPage} = pagination
+function configureMovePage (pagination, onPageChange) {
+  const { hasPrevPage, hasNextPage, prevPage, nextPage } = pagination
 
   previusButton.disabled = !hasPrevPage
   nextButton.disabled = !hasNextPage

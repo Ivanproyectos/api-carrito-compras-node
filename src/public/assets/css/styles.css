@@ -371,6 +371,11 @@ nav{
     border-bottom-right-radius: 0;
     border-right:0;
 }
+.table-product__search #sort{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
 .table-product__search select{
     flex-basis: 200px;
     border-top-left-radius: 0;

@@ -1,13 +1,12 @@
 import { Router } from 'express'
 import { upload } from '../helpers/upload.js'
 import { StatusCodes } from 'http-status-codes'
-import { createProductValidator } from '../validators/product.validator.js'
+import { createProductValidator, createGetProductValidator } from '../validators/product.validator.js'
 import ProductDao from '../daos/database/productDao.js'
 
 const router = Router()
 
 export default (io) => {
-  
   router.get('/products', async (req, res, next) => {
     try {
       const productDao = new ProductDao()
@@ -20,13 +19,16 @@ export default (io) => {
     }
   })
 
-  router.get('/products/paginated', async (req, res, next) => {
+  router.get('/products/paginated', createGetProductValidator, async (req, res, next) => {
     try {
+      const { page = 1, limit = 8, query = {}, sort, title = '' } = req.query
+      const queryObject = typeof query === 'string' && query !== ''
+        ? JSON.parse(query)
+        : {}
 
-      const { page = 1, limit = 8, search = '', sort } = req.query
       const productDao = new ProductDao()
 
-      const result = await productDao.getProductsPaginated(page, limit, search, sort)
+      const result = await productDao.getProductsPaginated(page, limit, queryObject, title, sort)
 
       res.send({
         products: result.docs,
@@ -39,16 +41,13 @@ export default (io) => {
           nextPage: result.nextPage
         }
       })
-
     } catch (err) {
       next(err)
     }
   })
 
-
   router.get('/products/:id', async (req, res, next) => {
     try {
-
       const id = req.params.id
       const productDao = new ProductDao()
 
@@ -67,7 +66,7 @@ export default (io) => {
     try {
       const { id } = req.params
       const productDao = new ProductDao()
-      
+
       const product = await productDao.getProductById(id)
 
       if (!product) {

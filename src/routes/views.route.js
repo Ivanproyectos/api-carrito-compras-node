@@ -10,7 +10,7 @@ router.get('/products', async (req, res, next) => {
 
     const productDao = new ProductDao()
     const result = await productDao.getProductsPaginated(page, limit)
-    
+
     res.render('home', {
       products: result.docs,
       pagination: {
@@ -22,7 +22,6 @@ router.get('/products', async (req, res, next) => {
         nextPage: result.nextPage
       }
     })
-
   } catch (err) {
     next(err)
   }
@@ -30,7 +29,6 @@ router.get('/products', async (req, res, next) => {
 
 router.get('/products-real-time', async (req, res, next) => {
   try {
-
     const productController = new ProductController()
     const products = await productController.getProducts()
 

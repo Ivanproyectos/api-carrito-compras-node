@@ -5,8 +5,9 @@ import '/socket.io/socket.io.js'
 
 const buttonSave = document.querySelector('#button-save')
 const tableProducts = document.querySelector('#table-products')
-const productLimitSelect = document.querySelector('#limit');
+const productLimitSelect = document.querySelector('#limit')
 const searchInput = document.querySelector('#search')
+const sortSelect = document.querySelector('#sort')
 
 const socket = io()
 
@@ -16,6 +17,8 @@ initProducts()
 searchInput.addEventListener('keyup', initProducts)
 buttonSave.addEventListener('click', createProduct)
 productLimitSelect.addEventListener('change', initProducts)
+sortSelect.addEventListener('change', initProducts)
+
 tableProducts.addEventListener('click', async (event) => {
   const buttonDelete = event.target.closest('button[data-action="delete"]')
   if (buttonDelete) {
@@ -23,11 +26,18 @@ tableProducts.addEventListener('click', async (event) => {
     deleteProduct(id)
   }
 })
-async function getProducts (page) {
- const search = searchInput.value
- const limit =  parseInt(productLimitSelect.value)
 
-  const url = `/api/products/paginated?search=${search}&limit=${limit}&page=${page}`
+async function getProducts (page) {
+  
+  const query = {
+    title: searchInput.value,
+    limit: Number(productLimitSelect.value),
+    sort: sortSelect.value ?? 'asc',
+    page,
+  }
+
+  query.limit = query.limit === 0 ? 5 : query.limit
+  const url = `/api/products/paginated?${new URLSearchParams(query).toString()}`
   const respose = await fetch(url)
   const products = await respose.json()
 
@@ -71,9 +81,11 @@ async function deleteProduct (id) {
   }
   await fetch(url, requestOptions)
   SweetOk('Producto eliminado con exito')
+
+  initProducts()
 }
 async function initProducts (page = 1) {
-  const { products, pagination} = await getProducts(page)
+  const { products, pagination } = await getProducts(page)
   renderProducts(products)
   renderPagination(pagination, initProducts)
 }

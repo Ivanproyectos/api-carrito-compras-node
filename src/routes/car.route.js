@@ -7,20 +7,17 @@ const router = Router()
 
 router.post('/cars', async (req, res, next) => {
   try {
-
     const carDao = new CarDao()
     const { _id } = await carDao.createCar()
 
     res.send({ message: `Carrito creado con el id: ${_id}`, carId: _id })
       .status(StatusCodes.CREATED)
-
   } catch (err) {
     next(err)
   }
 })
 router.post('/cars/:cid/product/:pid', addProductValidator, async (req, res, next) => {
   try {
-
     const { cid, pid } = req.params
     const carDao = new CarDao()
 
@@ -32,7 +29,6 @@ router.post('/cars/:cid/product/:pid', addProductValidator, async (req, res, nex
 })
 router.get('/cars/:id', getCarValidator, async (req, res, next) => {
   try {
-
     const { id } = req.params
     const carDao = new CarDao()
 
