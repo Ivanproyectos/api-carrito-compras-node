@@ -1,2 +1,2 @@
 # api-carrito-compras-node
-api del curso de node de un carrito de compras
+proyecto web con node js y mongoose como base de datos para administrar productos y carrito de compra
